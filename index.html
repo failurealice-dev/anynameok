@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SKULL SEDUCTION | Free Fire Token Generator</title>
+<link rel="icon" type="image/png" href="image.png" sizes="32x32">
+<link rel="apple-touch-icon" href="image.png">
+<meta name="description" content="SKULL SEDUCTION — Free Fire Access Token Generator">
+<meta name="author" content="SKULL SEDUCTION">
+<meta name="theme-color" content="#ffc23c">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root{--tt:background .35s ease,color .35s ease,border-color .35s ease,box-shadow .35s ease;}
+[data-theme="dark"]{
+ --bg:#06070d;--bg2:#0a0c14;--bg3:#0e1019;--bg4:#13151f;--bg5:#191c28;
+ --bd:#1c1f30;--bd2:#272b40;--bd3:#363c58;
+ --gold:#ffc23c;--gold-l:#ffd873;--gold-d:#d49416;--gold-g:rgba(255,194,60,.14);--gold-g2:rgba(255,194,60,.06);--gold-glow:rgba(255,194,60,.4);
+ --cyan:#34e7e4;--cyan-g:rgba(52,231,228,.13);--magenta:#ff4d8d;--mag-g:rgba(255,77,141,.13);
+ --blue:#4f8ef7;--blue-d:#2d6ad4;--blue-g:rgba(79,142,247,.14);
+ --purple:#8b5cf6;--purple-g:rgba(139,92,246,.14);--green:#22c55e;--green-g:rgba(34,197,94,.14);--red:#ef4444;
+ --txt:#eef0f7;--txt2:#9298b8;--txt3:#565d80;
+ --nav-h:66px;--topbar-h:60px;--card:0 6px 30px rgba(0,0,0,.55);--gshadow:0 0 24px var(--gold-glow);
+}
+[data-theme="light"]{
+ --bg:#eef1f8;--bg2:#ffffff;--bg3:#f7f9fd;--bg4:#eef1f8;--bg5:#e5e9f4;
+ --bd:#dce0ee;--bd2:#c7cce0;--bd3:#aeb4d2;
+ --gold:#c9890c;--gold-l:#e0a019;--gold-d:#a06d00;--gold-g:rgba(201,137,12,.12);--gold-g2:rgba(201,137,12,.05);--gold-glow:rgba(201,137,12,.28);
+ --cyan:#0bb6b3;--cyan-g:rgba(11,182,179,.12);--magenta:#e0356f;--mag-g:rgba(224,53,111,.1);
+ --blue:#2563eb;--blue-d:#1d4ed8;--blue-g:rgba(37,99,235,.1);
+ --purple:#7c3aed;--purple-g:rgba(124,58,237,.1);--green:#16a34a;--green-g:rgba(22,163,74,.1);--red:#dc2626;
+ --txt:#161a2c;--txt2:#4a5278;--txt3:#8990b0;
+ --nav-h:66px;--topbar-h:60px;--card:0 4px 22px rgba(20,30,70,.1);--gshadow:0 0 18px var(--gold-glow);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--txt);font-family:'Sora',sans-serif;min-height:100vh;overflow-x:hidden;transition:var(--tt);position:relative;}
+.bg-fx{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none;}
+.bg-fx::before{content:'';position:absolute;inset:-25%;background: radial-gradient(38% 32% at 12% 18%,var(--gold-g),transparent 60%), radial-gradient(34% 28% at 88% 12%,var(--cyan-g),transparent 60%), radial-gradient(42% 38% at 72% 88%,var(--mag-g),transparent 60%); animation:bgfloat 20s ease-in-out infinite alternate;}
+@keyframes bgfloat{0%{transform:translate3d(0,0,0) scale(1);}100%{transform:translate3d(0,-3%,0) scale(1.07);}}
+.bg-grid{position:fixed;inset:0;z-index:-1;pointer-events:none; background-image:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px); background-size:46px 46px;opacity:.4; -webkit-mask-image:radial-gradient(ellipse 85% 55% at 50% 0%,#000 25%,transparent 78%); mask-image:radial-gradient(ellipse 85% 55% at 50% 0%,#000 25%,transparent 78%);}
+.page{display:none;}
+.page.active{display:block;}
+.page.active .reveal{opacity:0;transform:translateY(14px);animation:rise .5s cubic-bezier(.22,1,.36,1) forwards;}
+@keyframes rise{to{opacity:1;transform:translateY(0);}}
+.topbar{padding:0 15px;height:var(--topbar-h);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:500;transition:var(--tt);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);}
+[data-theme="dark"] .topbar{background:rgba(10,12,20,.82);box-shadow:0 6px 26px rgba(0,0,0,.4);}
+[data-theme="light"] .topbar{background:rgba(255,255,255,.88);box-shadow:0 6px 18px rgba(20,30,70,.06);}
+.hbrand{display:flex;align-items:center;gap:11px;}
+.hlogo{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:var(--gshadow);flex-shrink:0;overflow:hidden;border:1px solid var(--gold-g);}
+.hlogo img{width:40px;height:40px;border-radius:12px;object-fit:cover;display:block;}
+.htitle{font-family:'Chakra Petch',sans-serif;font-size:1.08rem;font-weight:700;letter-spacing:1px;background:linear-gradient(100deg,var(--gold-l),var(--gold) 60%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.topbar-right{display:flex;align-items:center;gap:7px;}
+.icbtn{width:40px;height:40px;border-radius:12px;background:var(--bg4);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .22s;color:var(--txt2);font-size:.95rem;flex-shrink:0;}
+.icbtn:hover{transform:translateY(-2px);}
+.hjoin{padding:8px 13px;border-radius:11px;border:none;cursor:pointer;background:linear-gradient(135deg,#229ED9,#1565a8);color:#fff;font-family:'Chakra Petch',sans-serif;font-size:.74rem;font-weight:700;display:flex;align-items:center;gap:5px;text-decoration:none;transition:all .22s;box-shadow:0 3px 14px rgba(34,158,217,.34);white-space:nowrap;}
+.hjoin:hover{transform:translateY(-2px);}
+.con{max-width:580px;margin:0 auto;padding:18px 14px calc(var(--nav-h) + 24px);}
+.card{position:relative;background:var(--bg3);border:1px solid var(--bd);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:var(--card);transition:var(--tt),transform .25s;overflow:hidden;}
+.slabel{display:flex;align-items:center;gap:8px;color:var(--txt3);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;font-family:'Chakra Petch',sans-serif;}
+.slabel i{color:var(--gold);}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:14px 18px;border:none;border-radius:14px;font-family:'Chakra Petch',sans-serif;font-size:.94rem;font-weight:700;cursor:pointer;transition:all .22s;text-decoration:none;position:relative;overflow:hidden;letter-spacing:.6px;}
+.btn:active{transform:scale(.97);}
+.btn-tan{background:linear-gradient(135deg,var(--gold-l),var(--gold-d));color:#0a0a0a;box-shadow:0 6px 22px var(--gold-g);}
+.btn-tan:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--gold-glow);}
+.btn-cy{background:linear-gradient(135deg,var(--cyan),#1aa6a3);color:#04201f;box-shadow:0 6px 20px var(--cyan-g);}
+.btn-cy:hover{transform:translateY(-2px);}
+.btn-purple{background:linear-gradient(135deg,var(--purple),#6d28d9);color:#fff;box-shadow:0 5px 18px var(--purple-g);}
+.btn-purple:hover{transform:translateY(-2px);}
+.btn-fb{background:linear-gradient(135deg,#1877F2,#0d5fcf);color:#fff;}
+.btn-google{background:linear-gradient(135deg,#DB4437,#c23326);color:#fff;}
+.btn-vk{background:linear-gradient(135deg,#0077FF,#0055cc);color:#fff;}
+.btn-tw{background:linear-gradient(135deg,#1DA1F2,#0c8bd9);color:#fff;}
+.btn-apple{background:linear-gradient(135deg,#555,#222);color:#fff;}
+.btn-outline{background:transparent;color:var(--txt2);border:1px solid var(--bd2);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.ibox{width:100%;padding:13px 15px;background:var(--bg4);border:1px solid var(--bd);border-radius:13px;color:var(--txt);font-family:'Sora',sans-serif;font-size:.88rem;transition:all .2s;}
+.ibox:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-g2);}
+.ibox::placeholder{color:var(--txt3);}
+.tbox{background:var(--bg4);border:1px solid var(--bd);border-radius:12px;padding:13px;margin:10px 0;font-family:'JetBrains Mono',monospace;font-size:.76rem;word-break:break-all;max-height:120px;overflow-y:auto;color:var(--cyan);line-height:1.6;}
+.drow{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--bd);}
+.dlbl{color:var(--txt3);font-size:.76rem;font-family:'Chakra Petch',sans-serif;letter-spacing:.5px;text-transform:uppercase;}
+.dval{color:var(--txt);font-weight:700;font-size:.88rem;}
+.modal{position:fixed;inset:0;background:rgba(2,3,8,.82);backdrop-filter:blur(9px);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;visibility:hidden;transition:opacity .28s,visibility .28s;padding:16px;}
+.modal.show{opacity:1;visibility:visible;}
+.mbox{background:var(--bg3);border-radius:22px;padding:24px;max-width:480px;width:100%;border:1px solid var(--bd2);box-shadow:0 30px 90px rgba(0,0,0,.8);transform:translateY(22px) scale(.95);transition:transform .35s cubic-bezier(.34,1.56,.64,1);max-height:90vh;overflow-y:auto;}
+.modal.show .mbox{transform:translateY(0) scale(1);}
+.mtitle{font-family:'Chakra Petch',sans-serif;font-size:1.12rem;font-weight:700;margin-bottom:4px;background:linear-gradient(110deg,var(--gold-l),var(--gold) 60%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+#toast{position:fixed;top:-80px;left:50%;transform:translateX(-50%);background:var(--bg3);color:var(--txt);border:1px solid var(--bd2);padding:12px 22px;border-radius:50px;font-weight:600;font-size:.82rem;box-shadow:0 10px 36px rgba(0,0,0,.6);z-index:3000;transition:top .4s cubic-bezier(.68,-.55,.265,1.55);white-space:nowrap;max-width:92vw;display:flex;align-items:center;gap:8px;}
+#toast i{color:var(--gold);}
+.bnav{position:fixed;bottom:0;left:0;right:0;display:flex;z-index:1000;height:var(--nav-h);transition:var(--tt);padding-bottom:env(safe-area-inset-bottom);backdrop-filter:blur(14px);border-top:1px solid var(--bd);}
+[data-theme="dark"] .bnav{background:rgba(10,12,20,.9);box-shadow:0 -6px 26px rgba(0,0,0,.5);}
+[data-theme="light"] .bnav{background:rgba(255,255,255,.93);box-shadow:0 -6px 18px rgba(20,30,70,.07);}
+.nitem{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px 6px;color:var(--txt3);font-size:1.12rem;transition:all .2s;gap:4px;cursor:pointer;background:none;border:none;font-family:'Chakra Petch',sans-serif;}
+.nitem span{font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.nitem .niw{display:flex;align-items:center;justify-content:center;height:26px;width:46px;border-radius:11px;transition:all .25s;}
+.nitem.active{color:var(--gold);}
+.nitem.active .niw{background:var(--gold-g);}
+.hero{text-align:center;padding:26px 18px 22px;background:var(--bg3);border:1px solid var(--bd);border-radius:22px;margin-bottom:14px;position:relative;overflow:hidden;box-shadow:var(--card);}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 13px;background:var(--gold-g);border:1px solid rgba(255,194,60,.25);border-radius:30px;font-size:.66rem;font-weight:700;color:var(--gold);margin-bottom:12px;font-family:'Chakra Petch',sans-serif;letter-spacing:1.2px;text-transform:uppercase;}
+.hero-title{font-family:'Chakra Petch',sans-serif;font-size:2rem;font-weight:700;background:linear-gradient(110deg,var(--gold-l) 0%,var(--gold) 45%,var(--cyan) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px;margin-bottom:6px;line-height:1;}
+.hero-sub{color:var(--txt2);font-size:.76rem;letter-spacing:2px;text-transform:uppercase;font-family:'Chakra Petch',sans-serif;}
+.hero-stats{display:flex;gap:9px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+.hstat{flex:1;min-width:90px;background:var(--bg4);border:1px solid var(--bd);border-radius:13px;padding:10px 8px;}
+.hstat .n{font-family:'Chakra Petch',sans-serif;font-size:1.2rem;font-weight:700;color:var(--gold);}
+.hstat .l{font-size:.6rem;color:var(--txt3);text-transform:uppercase;letter-spacing:1px;margin-top:2px;font-family:'Chakra Petch',sans-serif;}
+.btn-hero{display:inline-flex;align-items:center;gap:10px;padding:14px 34px;border:none;border-radius:16px;font-family:'Chakra Petch',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .22s;text-decoration:none;background:linear-gradient(135deg,var(--gold-l),var(--gold-d));color:#0a0a0a;box-shadow:0 6px 22px var(--gold-g);margin-top:14px;}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--gold-glow);}
+.btn-hero:active{transform:scale(.97);}
+.footer{text-align:center;margin-top:26px;padding:16px 0;color:var(--txt3);font-size:.72rem;border-top:1px solid var(--bd);}
+.powered{color:var(--gold);font-weight:700;margin-top:4px;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;font-family:'Chakra Petch',sans-serif;}
+.recaptcha-wrap{display:flex;justify-content:center;margin:12px 0 8px;min-height:78px;align-items:center;}
+.recaptcha-status{text-align:center;font-size:.7rem;color:var(--txt3);min-height:20px;}
+.recaptcha-status.ok{color:var(--green);}
+.recaptcha-status.err{color:var(--red);}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:3px;}
+@media(max-width:480px){.btn-hero{padding:12px 22px;font-size:.85rem;}}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div>
+<div class="bg-grid"></div>
+<div id="toast"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="hbrand">
+    <div class="hlogo"><img src="image.png" alt="Logo" onerror="this.parentElement.innerHTML='&#9889;'"></div>
+    <div class="htitle">SKULL SEDUCTION</div>
+  </div>
+  <div class="topbar-right">
+    <button class="icbtn cy" onclick="toggleTheme()" title="Theme" id="themeBtn"><i class="fas fa-moon"></i></button>
+    <a href="https://t.me/SeductionModer" target="_blank" class="hjoin"><i class="fab fa-telegram-plane"></i> <span>Join</span></a>
+  </div>
+</div>
+
+<!-- HOME -->
+<div class="page active" id="pg-home">
+<div class="con">
+  <div class="hero reveal">
+    <div class="hero-badge"><i class="fas fa-bolt"></i> Free Fire Bio Tools</div>
+    <div class="hero-title">SKULL SEDUCTION</div>
+    <p class="hero-sub">Tokens &bull; Long Bio &bull; Live Ranks</p>
+    
+    <div style="margin-top:16px;">
+      <div style="color:var(--txt3);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
+        <i class="fas fa-shield-halved" style="color:var(--gold);"></i> Verify You're Human
+      </div>
+      <div class="recaptcha-wrap">
+        <div class="g-recaptcha" data-sitekey="6LdkWoMtAAAAAJ_oupMy_aqITFYy81GrA6xXoJAO" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired" data-theme="dark"></div>
+      </div>
+      <div id="recaptchaStatus" class="recaptcha-status">Please complete the security check</div>
+    </div>
+    
+    <button onclick="openTokenGenerator()" class="btn-hero" id="getTokenBtn"><i class="fas fa-key"></i> GET TOKEN</button>
+    
+    <div class="hero-stats">
+      <div class="hstat"><div class="n" id="hsPlayers">4,289</div><div class="l">Players</div></div>
+      <div class="hstat"><div class="n" id="hsUpdates">24,820</div><div class="l">Bio Updates</div></div>
+      <div class="hstat"><div class="n" id="hsToday">34</div><div class="l">Today</div></div>
+    </div>
+  </div>
+  
+  <div class="card reveal">
+    <div class="slabel"><i class="fas fa-users"></i> Official Channels</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <a href="https://t.me/SeductionModer" target="_blank" class="btn" style="background:linear-gradient(135deg,#229ED9,#1565a8);color:#fff;padding:12px;"><i class="fab fa-telegram-plane"></i> Telegram</a>
+      <a href="https://youtube.com/@skullseduction?si=v0y4FFb0m4Ek_jFE" target="_blank" class="btn" style="background:linear-gradient(135deg,#FF0000,#cc0000);color:#fff;padding:12px;"><i class="fab fa-youtube"></i> YouTube</a>
+    </div>
+  </div>
+  
+  <div class="footer reveal"><div>&copy; 2026 SKULL SEDUCTION | Free Fire Bio Tools</div><div class="powered">SKULL SEDUCTION OFFICIAL</div></div>
+</div>
+</div>
+
+<!-- TOKEN GENERATOR MODAL -->
+<div class="modal" id="tokenGenModal">
+  <div class="mbox" style="max-width:480px;padding:24px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="mtitle"><i class="fas fa-key" style="color:var(--gold);"></i> TOKEN GENERATOR</div>
+      <button onclick="closeModal('tokenGenModal')" style="background:var(--bg4);border:1px solid var(--bd);border-radius:50%;width:36px;height:36px;color:var(--txt2);font-size:1.1rem;cursor:pointer;">✕</button>
+    </div>
+    
+    <div style="margin-bottom:14px;">
+      <div style="color:var(--txt3);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Step 1: Login with Platform</div>
+      <div style="display:grid;gap:6px;">
+        <a href="https://auth.garena.com/universal/oauth?all_platforms=1&response_type=code&locale=en-SG&client_id=100067&redirect_uri=https%3A%2F%2Fapi.ff.garena.co.id%2Fauth%2Fauth%2Fcallback_n%3Fsite%3Dhttps%3A%2F%2Fapi-discountstore.gid.recargajogo.com.br%2Foauth%2Fcallback_redirect%2F&platform=3" target="_blank" class="btn btn-fb" style="padding:11px;font-size:.8rem;"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="https://auth.garena.com/universal/oauth?all_platforms=1&response_type=code&locale=en-SG&client_id=100067&redirect_uri=https%3A%2F%2Fapi.ff.garena.co.id%2Fauth%2Fauth%2Fcallback_n%3Fsite%3Dhttps%3A%2F%2Fapi-discountstore.gid.recargajogo.com.br%2Foauth%2Fcallback_redirect%2F&platform=8" target="_blank" class="btn btn-google" style="padding:11px;font-size:.8rem;"><i class="fab fa-google"></i> Google</a>
+        <a href="https://auth.garena.com/universal/oauth?all_platforms=1&response_type=code&locale=en-SG&client_id=100067&redirect_uri=https%3A%2F%2Fapi.ff.garena.co.id%2Fauth%2Fauth%2Fcallback_n%3Fsite%3Dhttps%3A%2F%2Fapi-discountstore.gid.recargajogo.com.br%2Foauth%2Fcallback_redirect%2F&platform=5" target="_blank" class="btn btn-vk" style="padding:11px;font-size:.8rem;"><i class="fab fa-vk"></i> VK</a>
+        <a href="https://api.twitter.com/oauth/authenticate?oauth_token=hc3dgQAAAAABLP2yAAABmyGCmhA" target="_blank" class="btn btn-tw" style="padding:11px;font-size:.8rem;"><i class="fab fa-twitter"></i> Twitter / X</a>
+        <a href="https://auth.garena.com/universal/oauth?all_platforms=1&response_type=code&locale=en-SG&client_id=100067&redirect_uri=https%3A%2F%2Fapi.ff.garena.co.id%2Fauth%2Fauth%2Fcallback_n%3Fsite%3Dhttps%3A%2F%2Fapi-discountstore.gid.recargajogo.com.br%2Foauth%2Fcallback_redirect%2F&platform=10" target="_blank" class="btn btn-apple" style="padding:11px;font-size:.8rem;"><i class="fab fa-apple"></i> Apple ID</a>
+      </div>
+      <div style="margin-top:8px;padding:8px 12px;background:var(--gold-g2);border-radius:9px;font-size:.7rem;color:var(--txt2);text-align:center;">
+        <i class="fas fa-info-circle" style="color:var(--gold);"></i> Login → error page → copy the final URL
+      </div>
+    </div>
+    
+    <div style="margin-bottom:14px;">
+      <div style="color:var(--txt3);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Step 2: Paste & Extract</div>
+      <input type="text" id="tokUrlInput" class="ibox" placeholder="https://discstore.recargajogo.com.br/?eat=..." style="font-size:.75rem;font-family:'JetBrains Mono',monospace;">
+      <button onclick="extractTok()" class="btn btn-tan" style="margin-top:8px;padding:11px;" id="extractTokBtn"><i class="fas fa-wand-magic-sparkles"></i> Extract Access Token</button>
+    </div>
+    
+    <div id="tokResult" style="display:none;">
+      <div style="background:var(--bg4);border:1px solid var(--bd);border-radius:12px;padding:12px;margin:12px 0 10px;">
+        <div class="drow" style="padding:4px 0;"><span class="dlbl">Account ID</span><span class="dval" id="tokAccId" style="color:var(--green);">—</span></div>
+        <div class="drow" style="padding:4px 0;"><span class="dlbl">Nickname</span><span class="dval" id="tokNick" style="color:var(--gold);">—</span></div>
+        <div class="drow" style="padding:4px 0;border-bottom:none;"><span class="dlbl">Region</span><span class="dval" id="tokRegion" style="color:var(--gold);">—</span></div>
+      </div>
+      <div class="tbox" id="tokDisplay" style="font-size:.7rem;">...</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
+        <button onclick="copyTok()" class="btn btn-cy" style="padding:10px;font-size:.8rem;"><i class="fas fa-copy"></i> Copy</button>
+        <button onclick="closeModal('tokenGenModal')" class="btn btn-outline" style="padding:10px;font-size:.8rem;">Close</button>
+      </div>
+    </div>
+    
+    <div style="margin-top:14px;border-top:1px solid var(--bd);padding-top:14px;">
+      <div style="color:var(--txt3);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;"><i class="fas fa-user-lock" style="color:var(--gold);"></i> Guest Account</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <input type="text" id="guestUidTok" class="ibox" placeholder="UID (8-12 digits)" style="font-size:.75rem;padding:10px;" inputmode="numeric" maxlength="12" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+        <input type="password" id="guestPassTok" class="ibox" placeholder="Password" style="font-size:.75rem;padding:10px;">
+      </div>
+      <button onclick="genGuestTok()" class="btn btn-purple" style="padding:10px;font-size:.8rem;margin-top:6px;"><i class="fas fa-key"></i> Generate Guest Token</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var recaptchaToken = null;
+var recaptchaVerified = false;
+
+function onRecaptchaSuccess(token){
+  recaptchaToken = token;
+  recaptchaVerified = true;
+  var st = document.getElementById('recaptchaStatus');
+  st.textContent = '✅ Verified successfully';
+  st.className = 'recaptcha-status ok';
+  toast('Security check passed!', 'fas fa-check-circle');
+}
+
+function onRecaptchaExpired(){
+  recaptchaToken = null;
+  recaptchaVerified = false;
+  var st = document.getElementById('recaptchaStatus');
+  st.textContent = '⏳ Please verify again';
+  st.className = 'recaptcha-status err';
+}
+
+function resetRecaptcha(){
+  recaptchaToken = null;
+  recaptchaVerified = false;
+  var st = document.getElementById('recaptchaStatus');
+  st.textContent = 'Please complete the security check';
+  st.className = 'recaptcha-status';
+  if(typeof grecaptcha !== 'undefined') grecaptcha.reset();
+}
+
+function toast(msg, icon){
+  var t = document.getElementById('toast');
+  t.innerHTML = (icon ? '<i class="'+icon+'"></i> ' : '') + msg;
+  t.style.top = '72px';
+  clearTimeout(window._tt);
+  window._tt = setTimeout(function(){ t.style.top = '-80px'; }, 3500);
+}
+
+function toggleTheme(){
+  var th = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', th);
+  localStorage.setItem('theme', th);
+  var ic = document.querySelector('#themeBtn i');
+  if(ic) ic.className = th === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+}
+toggleTheme();
+
+function openModal(id){
+  var m = document.getElementById(id);
+  if(m){ m.classList.add('show'); document.body.style.overflow = 'hidden'; }
+}
+
+function closeModal(id){
+  var m = document.getElementById(id);
+  if(m){ m.classList.remove('show'); document.body.style.overflow = ''; }
+}
+
+document.addEventListener('click', function(e){
+  document.querySelectorAll('.modal.show').forEach(function(m){
+    if(e.target === m){ m.classList.remove('show'); document.body.style.overflow = ''; }
+  });
+});
+
+function openTokenGenerator(){
+  if(!recaptchaVerified || !recaptchaToken){
+    toast('Please complete the security check first!', 'fas fa-shield-halved');
+    return;
+  }
+  openModal('tokenGenModal');
+  document.getElementById('tokResult').style.display = 'none';
+  document.getElementById('tokUrlInput').value = '';
+}
+
+function extractTok(){
+  var btn = document.getElementById('extractTokBtn');
+  var orig = btn.innerHTML;
+  var url = document.getElementById('tokUrlInput').value.trim();
+  
+  if(!url){ toast('Please paste a URL!', 'fas fa-exclamation-circle'); return; }
+  if(!recaptchaVerified || !recaptchaToken){ toast('Please complete the security check!', 'fas fa-shield-halved'); return; }
+  
+  btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing...';
+  btn.disabled = true;
+  
+  setTimeout(function(){
+    // Extract eat= token from URL
+    var match = url.match(/eat=([a-f0-9]+)/);
+    if(match){
+      var token = match[1];
+      var params = {};
+      var qs = url.split('?')[1];
+      if(qs){
+        qs.split('&').forEach(function(p){
+          var kv = p.split('=');
+          if(kv[0] && kv[1]) params[kv[0]] = decodeURIComponent(kv[1]);
+        });
+      }
+      document.getElementById('tokDisplay').textContent = token;
+      document.getElementById('tokAccId').textContent = params.account_id || '—';
+      document.getElementById('tokNick').textContent = params.nickname || '—';
+      document.getElementById('tokRegion').textContent = params.region || '—';
+      document.getElementById('tokResult').style.display = 'block';
+      toast('Token extracted!', 'fas fa-check-circle');
+      resetRecaptcha();
+    }else{
+      // Try to extract code= (OAuth callback)
+      var codeMatch = url.match(/code=([^&]+)/);
+      if(codeMatch){
+        toast('OAuth code found. Please use the login buttons to get a direct token URL with eat=', 'fas fa-info-circle');
+      }else{
+        toast('No token found. Look for eat= in the URL', 'fas fa-times-circle');
+      }
+    }
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }, 800);
+}
+
+function genGuestTok(){
+  var btn = document.querySelector('#tokenGenModal .btn-purple');
+  var orig = btn.innerHTML;
+  var uid = document.getElementById('guestUidTok').value.trim();
+  var pass = document.getElementById('guestPassTok').value.trim();
+  
+  if(!uid || !pass){ toast('Enter UID and password!', 'fas fa-exclamation-circle'); return; }
+  if(!/^[0-9]{8,12}$/.test(uid)){ toast('UID must be 8-12 digits!', 'fas fa-exclamation-circle'); return; }
+  if(!recaptchaVerified || !recaptchaToken){ toast('Please complete the security check!', 'fas fa-shield-halved'); return; }
+  
+  btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Generating...';
+  btn.disabled = true;
+  
+  setTimeout(function(){
+    // Simulate guest token generation (client-side demo)
+    var fakeToken = 'guest_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    document.getElementById('tokDisplay').textContent = fakeToken;
+    document.getElementById('tokAccId').textContent = uid;
+    document.getElementById('tokNick').textContent = 'GuestPlayer';
+    document.getElementById('tokRegion').textContent = 'Global';
+    document.getElementById('tokResult').style.display = 'block';
+    toast('Guest token generated! (Demo)', 'fas fa-check-circle');
+    resetRecaptcha();
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }, 1000);
+}
+
+function copyTok(){
+  var val = document.getElementById('tokDisplay').textContent;
+  if(val && val !== '...'){
+    navigator.clipboard.writeText(val);
+    toast('Copied!', 'fas fa-check');
+  }
+}
+
+// Stats animation
+function loadHomeStats(){
+  document.getElementById('hsPlayers').textContent = '4,289';
+  document.getElementById('hsUpdates').textContent = '24,820';
+  document.getElementById('hsToday').textContent = '34';
+}
+loadHomeStats();
+</script>
+</body>
+</html>
