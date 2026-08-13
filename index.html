@@ -10,7 +10,6 @@
 <meta name="author" content="SKULL SEDUCTION">
 <meta name="theme-color" content="#ffc23c">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
 
@@ -112,10 +111,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Sora',sans-serif;min-hei
 .btn-hero:active{transform:scale(.97);}
 .footer{text-align:center;margin-top:26px;padding:16px 0;color:var(--txt3);font-size:.72rem;border-top:1px solid var(--bd);}
 .powered{color:var(--gold);font-weight:700;margin-top:4px;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;font-family:'Chakra Petch',sans-serif;}
-.recaptcha-wrap{display:flex;justify-content:center;margin:12px 0 8px;min-height:78px;align-items:center;}
-.recaptcha-status{text-align:center;font-size:.7rem;color:var(--txt3);min-height:20px;}
-.recaptcha-status.ok{color:var(--green);}
-.recaptcha-status.err{color:var(--red);}
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--bd2);border-radius:3px;}
@@ -146,16 +141,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Sora',sans-serif;min-hei
     <div class="hero-badge"><i class="fas fa-bolt"></i> Free Fire Bio Tools</div>
     <div class="hero-title">SKULL SEDUCTION</div>
     <p class="hero-sub">Tokens &bull; Long Bio &bull; Live Ranks</p>
-    
-    <div style="margin-top:16px;">
-      <div style="color:var(--txt3);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
-        <i class="fas fa-shield-halved" style="color:var(--gold);"></i> Verify You're Human
-      </div>
-      <div class="recaptcha-wrap">
-        <div class="g-recaptcha" data-sitekey="6LdkWoMtAAAAAJ_oupMy_aqITFYy81GrA6xXoJAO" data-callback="onRecaptchaSuccess" data-expired-callback="onRecaptchaExpired" data-theme="dark"></div>
-      </div>
-      <div id="recaptchaStatus" class="recaptcha-status">Please complete the security check</div>
-    </div>
     
     <button onclick="openTokenGenerator()" class="btn-hero" id="getTokenBtn"><i class="fas fa-key"></i> GET TOKEN</button>
     
@@ -220,7 +205,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Sora',sans-serif;min-hei
     </div>
     
     <div style="margin-top:14px;border-top:1px solid var(--bd);padding-top:14px;">
-      <div style="color:var(--txt3);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;"><i class="fas fa-user-lock" style="color:var(--gold);"></i> Guest Account</div>
+      <div style="color:var(--txt3);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;"><i class="fas fa-user-lock" style="color:var(--gold);"></i> Guest Account (Demo)</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
         <input type="text" id="guestUidTok" class="ibox" placeholder="UID (8-12 digits)" style="font-size:.75rem;padding:10px;" inputmode="numeric" maxlength="12" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
         <input type="password" id="guestPassTok" class="ibox" placeholder="Password" style="font-size:.75rem;padding:10px;">
@@ -231,35 +216,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Sora',sans-serif;min-hei
 </div>
 
 <script>
-var recaptchaToken = null;
-var recaptchaVerified = false;
-
-function onRecaptchaSuccess(token){
-  recaptchaToken = token;
-  recaptchaVerified = true;
-  var st = document.getElementById('recaptchaStatus');
-  st.textContent = '✅ Verified successfully';
-  st.className = 'recaptcha-status ok';
-  toast('Security check passed!', 'fas fa-check-circle');
-}
-
-function onRecaptchaExpired(){
-  recaptchaToken = null;
-  recaptchaVerified = false;
-  var st = document.getElementById('recaptchaStatus');
-  st.textContent = '⏳ Please verify again';
-  st.className = 'recaptcha-status err';
-}
-
-function resetRecaptcha(){
-  recaptchaToken = null;
-  recaptchaVerified = false;
-  var st = document.getElementById('recaptchaStatus');
-  st.textContent = 'Please complete the security check';
-  st.className = 'recaptcha-status';
-  if(typeof grecaptcha !== 'undefined') grecaptcha.reset();
-}
-
 function toast(msg, icon){
   var t = document.getElementById('toast');
   t.innerHTML = (icon ? '<i class="'+icon+'"></i> ' : '') + msg;
@@ -294,10 +250,6 @@ document.addEventListener('click', function(e){
 });
 
 function openTokenGenerator(){
-  if(!recaptchaVerified || !recaptchaToken){
-    toast('Please complete the security check first!', 'fas fa-shield-halved');
-    return;
-  }
   openModal('tokenGenModal');
   document.getElementById('tokResult').style.display = 'none';
   document.getElementById('tokUrlInput').value = '';
@@ -309,7 +261,6 @@ function extractTok(){
   var url = document.getElementById('tokUrlInput').value.trim();
   
   if(!url){ toast('Please paste a URL!', 'fas fa-exclamation-circle'); return; }
-  if(!recaptchaVerified || !recaptchaToken){ toast('Please complete the security check!', 'fas fa-shield-halved'); return; }
   
   btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing...';
   btn.disabled = true;
@@ -333,19 +284,17 @@ function extractTok(){
       document.getElementById('tokRegion').textContent = params.region || '—';
       document.getElementById('tokResult').style.display = 'block';
       toast('Token extracted!', 'fas fa-check-circle');
-      resetRecaptcha();
     }else{
-      // Try to extract code= (OAuth callback)
       var codeMatch = url.match(/code=([^&]+)/);
       if(codeMatch){
-        toast('OAuth code found. Please use the login buttons to get a direct token URL with eat=', 'fas fa-info-circle');
+        toast('OAuth code found. Use login buttons to get eat= token URL', 'fas fa-info-circle');
       }else{
         toast('No token found. Look for eat= in the URL', 'fas fa-times-circle');
       }
     }
     btn.innerHTML = orig;
     btn.disabled = false;
-  }, 800);
+  }, 600);
 }
 
 function genGuestTok(){
@@ -356,13 +305,11 @@ function genGuestTok(){
   
   if(!uid || !pass){ toast('Enter UID and password!', 'fas fa-exclamation-circle'); return; }
   if(!/^[0-9]{8,12}$/.test(uid)){ toast('UID must be 8-12 digits!', 'fas fa-exclamation-circle'); return; }
-  if(!recaptchaVerified || !recaptchaToken){ toast('Please complete the security check!', 'fas fa-shield-halved'); return; }
   
   btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Generating...';
   btn.disabled = true;
   
   setTimeout(function(){
-    // Simulate guest token generation (client-side demo)
     var fakeToken = 'guest_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     document.getElementById('tokDisplay').textContent = fakeToken;
     document.getElementById('tokAccId').textContent = uid;
@@ -370,7 +317,6 @@ function genGuestTok(){
     document.getElementById('tokRegion').textContent = 'Global';
     document.getElementById('tokResult').style.display = 'block';
     toast('Guest token generated! (Demo)', 'fas fa-check-circle');
-    resetRecaptcha();
     btn.innerHTML = orig;
     btn.disabled = false;
   }, 1000);
@@ -384,7 +330,6 @@ function copyTok(){
   }
 }
 
-// Stats animation
 function loadHomeStats(){
   document.getElementById('hsPlayers').textContent = '4,289';
   document.getElementById('hsUpdates').textContent = '24,820';
